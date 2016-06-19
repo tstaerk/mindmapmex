@@ -54,13 +54,6 @@ class mindmapextension
       $result.="ERR: dot process could not be opened. Install graphviz?";
     }
 
-    $handle = proc_open('dot -Tcmapx',$streams,$pipe);
-    fwrite($pipe[0],$dotcode);
-    fclose($pipe[0]);
-    echo stream_get_contents($pipe[1]);
-    fclose($pipe[1]);
-    proc_close($handle);
-
     $result=preg_replace("/\n/","",$result);
     return $result;
   }
